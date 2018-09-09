@@ -1,0 +1,183 @@
+%%% Local Variables:
+%%% mode: latex
+%%% Tex-engine: XeLaTeX
+%%% TeX-master: t
+%%% End:
+
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath,amsthm,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[utf8]{inputenc}
+\usepackage{color,soul}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+%%\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\: \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (cont.)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment \#1}
+\newcommand{\hmwkDueDate}{September 19th, 2018}
+\newcommand{\hmwkClass}{COMP 524 - Cybersecurity}
+\newcommand{\hmwkClassInstructor}{Dr. Michael Soltys}
+\newcommand{\hmwkAuthorName}{
+  Rihan Stephen Pereira\\
+  \texttt{email - rihanstephen.pereira576@myci.csuci.edu, studentID - 002497665}
+  \\
+  David Bryne\\
+  \texttt{email - something@myci.csuci.edu, studentID - 012345}
+  \\
+  Marco Cabrera\\
+  \texttt{email - something@myci.csuci.edu, studentID - 012345}
+  \\
+  Kaveh Arashvand\\
+  \texttt{email - something@myci.csuci.edu, studentID - 012345}
+}
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+\newcommand{\justif}[2]{&{#1}&\text{#2}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+\newcommand{\contradiction}{
+  \ensuremath{{\Rightarrow\mspace{-2mu}\Leftarrow}}
+}
+
+\begin{document}
+\maketitle
+\pagebreak
+
+% problem 1
+\begin{homeworkProblem}
+  Decrypt the following four documents. To submit the assignment, write a two page PDF report, which explains, with code snippets, how you managed to decrypt the documents, and what the documents were.
+  \begin{itemize}
+    \item \textcolor{cyan}{\ul{assignment-1-a.txt}}: Caesar cipher Base64 encoded text
+    \item \textcolor{cyan}{\ul{assignment-1-b.txt}}: MAC cipher Base64 encoded text
+    \item \textcolor{cyan}{\ul{assignment-1-c.txt}}: Caesar cipher Base64 encoded jpeg
+    \item \textcolor{cyan}{\ul{assignment-1-d.txt}}: MAC cipher Base64 encoded jpeg
+  \end{itemize}
+  \\
+  \textbf{Solution:}
+  \\
+  Report goes here
+\end{homeworkProblem}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
