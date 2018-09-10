@@ -39,15 +39,19 @@ def bruteforce_mac(base64alphabet,ciphertext):
       i = base64alphabet.index(letter)
       j = key.index(i)
       decrypt_msg += base64alphabet[j]
-      plaintext= decode_base64(decrypt_msg)
+    plaintext= decode_base64(decrypt_msg)
     if check_words(plaintext,my_dict): return(key,plaintext)
 
 
 #Entry point
 
-fileName=sys.argv[1]
-plaintext_file = open(fileName,'rb')
-ciphertext = plaintext_file.read()
+#fileName=sys.argv[1]
+ciphertext=""
+with open("decode.txt",'r') as inputed_file:
+    for line in inputed_file:
+        data = line
+        data = data.replace ('/n', '')
+        ciphertext = ciphertext+data 
 key,plaintext = bruteforce_mac(base64alphabet,ciphertext)
 print("key :",key)
 print("plaintext :", plaintext)
