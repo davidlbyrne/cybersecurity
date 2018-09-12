@@ -1,3 +1,6 @@
 auto/
 *.aux
 *.log
+assignment1/cc_base64_images/
+assignment1/__pycache__
+*.pyc
