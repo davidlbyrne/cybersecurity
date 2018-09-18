@@ -19,7 +19,7 @@ with open(filename) as f:
     else: image=image+"=" 
 
 imgdata = base64.b64decode(image)
-filename = 'some_image.jpg'  # I assume you have a way of picking unique filenames
+filename = 'solution_1d.jpg'  # I assume you have a way of picking unique filenames
 with open(filename, 'wb') as f:
     f.write(imgdata)
 
