@@ -176,9 +176,15 @@
   \textbf{Solution:}
 
 
+The approach I used to solve this problem was a known text attack. By inspecting the other image that was decoded in problem 3 I was able to determine the header and byte offset that was included when the image was taken from an iphone. Then after we base64 encoded that known image I was able to count the exact offset of the header in base64 characters. Once I had this offset decrypting the key was just a matter of comparing the character at the same offset in both the encrypted file and the know file. Once we had a mapping for every character we were able to write a python script that decrypted and decoded the file. 
 
+\includegraphics{solution_1d.jpg}
 
+The tool I used to calculate the byte offset of the image header was 0xd
 
+The key was: 2JzvLTdIARk3nyDg9s0NhxjGf18YQrq/ei6ZM+ObWCKotaclw7FE5BXHV4puUmPS
+
+The python program solution_1d.py will output the decrypted image to a file. You can run this code: python solution_1d.py  
  
 
 \end{homeworkProblem}
