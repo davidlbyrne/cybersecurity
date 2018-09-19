@@ -1,4 +1,4 @@
-filename="bas64_encode7.txt" 
+filename="assignment-1-b-enc.txt" 
 text=""
 with open(filename) as f:
   while True:
