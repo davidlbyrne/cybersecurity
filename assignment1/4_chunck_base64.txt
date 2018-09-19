@@ -1,0 +1,68 @@
+FIRST LOCATION OF EACH 4 letters in BASE64 MAPPING:
+
+   
+lmno--->b   .04+.02+.07+.08	=.21 =  Y 
+defg--->Z  .04+.13+.02+.02	=.19 =  U
+ _  --->I                       =.17 =  I
+tuvw--->d    		        =.15 =  S
+pqrs--->c   		        =.14 =  Z                    =.13 =  / 
+abc---->Y  .08+.01+.03		=.12 =  b 
+hijk--->a   .06+.04+0+.01	=.11 =  i 
+xyz---->e                       =.02 =  5  
+
+
+
+  **** **|**  ****| ****  **|** ****
+
+LAST LOCATION OF EACH 4                          
+g      SPACE           = l
+l (el)  e     0.127    = Q
+0 (Zero)t     0.090    = e
+K	a     0.081    = F
+v	o     0.075    = O
+p	i     0.069    = z
+u	n     0.067    = R
+z	s     0.063    = x
+o (oh)	h              = 6
+y	r    	       = A
+k	d	       = 8
+s	l              = P
+j	c              = D
+1	u
+t	m
+3	w
+m	f
+n	g
+5	y
+w	p
+i	b
+2	v
+r	k
+q	j
+4	x
+x	q
+6	z
+
+
+Third Location
+Plaintext                               Plaintext
+ | Base64                                | Base64
+ |  | Frequency 
+     |  | Frequency
+ 
+eu  V  0.15460 = 0.12702 + 0.02758  V     HX  h  0.06244 = 0.06094 + 0.0015  s
+_   B  0.13                         2
+dt  R  0.13309 = 0.04253 + 0.09056  W     GW  d  0.04375 = 0.02015 + 0.0236  r
+   			    W
+cs  N  0.09109 = 0.02782 + 0.06327  X     L  x  0.04025
+iy  l  0.08940 = 0.06966 + 0.01974  L    FV  Z  0.03206 = 0.02228 + 0.00978  
+aq  F  0.08262 = 0.08167 + 0.00095  Q     M  1  0.02406
+ O  9  0.07507                      F     P  B  0.01929
+BR  J  0.07479 = 0.01492 + 0.05987  d      K  t  0.00772
+ N  5  0.06749                      T     JZ  p  0.00227 = 0.00153 + 0.00074
+
+
+     
+    
+       a-w
+    00 0110
