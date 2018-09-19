@@ -227,7 +227,13 @@ showstringspaces=false            %
   File - \textcolor{cyan}{\ul{assignment-1-a.txt}}
   \\
   \\
-  A brute-force approached was used to solve this problem. Considering we are dealing with Caesar cipher Base64 encoded and encrypted text, and since we know that there are only 64 possible combinations in Base64, we have enough information to decrypt the cipher text by brute-forcing it. As part of the brute-force approach, we had to decrypt and decode for every single key, therefore we decrypted and decoded 64 times. This same process was repeated over and over again until we were able to read the cipher text by shifting it 19 times. It was at the 19 shift where we finally decrypted and decoded the Base64 version of the file back to plain text.
+  A brute-force approach was used to solve this problem. From one of the three basic classical attacks, we applied \textit{Ciphertext only attack}, also called as \textit{recognizable plaintext attack}. Considering we are dealing with Caesar Cipher(CC) base64 encrypted text, we were sure that its using one of the 63 possible keys from 64 character alphabet list to encrypt the plaintext. From Dr. soltys notes, we used decryption function
+
+  \begin{align*}
+    D_n(x) &= (x + n) (mod 64)
+  \end{align*}
+
+  Also, we ignored keys $n = 0$ and  $n = 64$, since the obtained ciphertext is same as plaintext. Each key was used to break the cipher followed by base64 decoding on the decrypted text to get the plaintext. On offset 19 i.e key $n = 19$, we got the plaintext. It is a poem from \textit{William Blake}.
   \\
   \\
   Python code snippet we used to obtain plaintext:
@@ -235,7 +241,6 @@ showstringspaces=false            %
   \\
   \\
   The below images shows the plaintext that we obtained after running the above code fragment.
-  \\
   \begin{figure}[h!]
     \includegraphics[width=18cm,height=13cm,keepaspectratio]{assign_1_output.png}
     \caption{assignment-1-a.txt deciphered and decoded output}
@@ -259,11 +264,17 @@ File - \textcolor{cyan}{\ul{assignment-1-b.txt}}
 % problem 1c
 \begin{homeworkProblem}
 \\
-\textbf{Caesar cipher Base64 encoded text}
+\textbf{Caesar cipher Base64 encoded image}
 \\
 File - \textcolor{cyan}{\ul{assignment-1-c.txt}}
 \\
-explaination for 1c goes here
+To crack this secret, we used \textit{recognizable plaintext attack}, also called \textit{Ciphertext only} attack. We performed brute force on the ciphertext - scanning all the keys and for each key we used the Decryption function 
+
+\begin{align*}
+  D_n(x) &= (x + n) (mod 64)
+\end{align*}
+where, $x$ is the character from ciphertext and $n$ is the key for that iteration. Also, note that the key $n = 0$ or $n = 64$ were not considered because it doesn't not change the original plaintext. For each key, after running the decryption function, base64 decoding was applied to the text, and that base64 data was saved to disk as an image. Doing this, we saved altogether 
+63 images to the disk. Finally, we found key $n = 9$ was used to encrypt the plaintext which gave us the resulting image during decryption.
 \\
 \\
 Python code snippet for decrypting and decoding Caesar Cipher base64 jpeg:
