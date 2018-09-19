@@ -16,6 +16,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{color,soul}
 \usepackage{graphicx}
+\usepackage{minted}
+\usepackage[english]{babel}
+
 \graphicspath{ {./} }
 
 \usetikzlibrary{automata,positioning}
@@ -102,13 +105,13 @@
 \newcommand{\hmwkClassInstructor}{Dr. Michael Soltys}
 \newcommand{\hmwkAuthorName}{
   Rihan Stephen Pereira\\
-  \texttt{email - rihanstephen.pereira576@myci.csuci.edu, studentID - 002497665}
+  \text{email - rihanstephen.pereira576@myci.csuci.edu, studentID - 002497665}
   \\
   David Bryne\\
   \texttt{email - something@myci.csuci.edu, studentID - 012345}
   \\
   Marco Cabrera\\
-  \texttt{email - something@myci.csuci.edu, studentID - 012345}
+  \text{email - marco.cabrera561@myci.csuci.edu, studentID - 002456715}
   \\
   Kaveh Arashvand\\
   \texttt{email - something@myci.csuci.edu, studentID - 012345}
@@ -159,6 +162,50 @@
   \ensuremath{{\Rightarrow\mspace{-2mu}\Leftarrow}}
 }
 
+% latex code for generating python code snippets
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+% end py code snippets
+
 \begin{document}
 \maketitle
 \pagebreak
@@ -174,13 +221,88 @@
   \end{itemize}
   \\
   \textbf{Solution:}
+  \\
+  \textbf{Caesar cipher Base64 encoded text}
+  \\
+  File - \textcolor{cyan}{\ul{assignment-1-a.txt}}
+  \\
+  \\
+  A brute-force approached was used to solve this problem. Considering we are dealing with Caesar cipher Base64 encoded and encrypted text, and since we know that there are only 64 possible combinations in Base64, we have enough information to decrypt the cipher text by brute-forcing it. As part of the brute-force approach, we had to decrypt and decode for every single key, therefore we decrypted and decoded 64 times. This same process was repeated over and over again until we were able to read the cipher text by shifting it 19 times. It was at the 19 shift where we finally decrypted and decoded the Base64 version of the file back to plain text.
+  \\
+  \\
+  Python code snippet we used to obtain plaintext:
+  \pythonexternal{cc_plaintext_decrypt.py}
+  \\
+  \\
+  The below images shows the plaintext that we obtained after running the above code fragment.
+  \\
+  \begin{figure}[h!]
+    \includegraphics[width=18cm,height=13cm,keepaspectratio]{assign_1_output.png}
+    \caption{assignment-1-a.txt deciphered and decoded output}
+  \end{figure}
 
+\end{homeworkProblem}
 
+\pagebreak
 
+% problem 1b
+\begin{homeworkProblem}
+\\
+\textbf{MAC cipher Base64 encoded text}
+\\
+File - \textcolor{cyan}{\ul{assignment-1-b.txt}}
+\\
+\end{homeworkProblem}
 
+\pagebreak
 
- 
+% problem 1c
+\begin{homeworkProblem}
+\\
+\textbf{Caesar cipher Base64 encoded text}
+\\
+File - \textcolor{cyan}{\ul{assignment-1-c.txt}}
+\\
+explaination for 1c goes here
+\\
+\\
+Python code snippet for decrypting and decoding Caesar Cipher base64 jpeg:
+\pythonexternal{decrypt_cc_images.py}
+\\
+\begin{figure}[h!]
+\includegraphics[width=18cm,height=10cm,keepaspectratio]{cc_image_cipher_detected_cli.png}
+\caption{assignment-1-c.txt Caesar cipher decrypted and decoded image}
+\end{figure}
+\end{homeworkProblem}
 
+\pagebreak
+
+% problem 1d
+\begin{homeworkProblem}
+  \\
+  \textbf{MAC cipher Base64 encoded jpeg}
+  \\
+  File - \textcolor{cyan}{\ul{assignment-1-d.txt}}
+  \\
+  \\
+  The approach I used to solve this problem was a known text attack. By inspecting the other image that was decoded in problem 3 I was able to determine the header and byte offset that was included when the image was taken from an iphone. Then after we base64 encoded that known image I was able to count the exact offset of the header in base64 characters. Once I had this offset decrypting the key was just a matter of comparing the character at the same offset in both the encrypted file and the know file. Once we had a mapping for every character we were able to write a python script that decrypted and decoded the file. 
+  \\
+  The tool I used to calculate the byte offset of the image header was 0xd
+  \\
+  \\
+  The key is: \ul{2JzvLTdIARk3nyDg9s0NhxjGf18YQrq/ei6ZM+ObWCKotaclw7FE5BXHV4puUmPS}
+  \\
+  \\
+  The python program solution\_1d.py will output the decrypted image to a file. You can run this code: python solution\_1d.py
+  \\
+  \\
+  Here is the Python code snippet which uses above key to reveal the secret jpeg image.
+  \pythonexternal{solution_1d.py}
+  \\
+  The jpeg image secret that we found after breaking the ciphertext:
+  \begin{figure}[h!]   \includegraphics[width=15cm,height=8cm,keepaspectratio]{solution_1d.jpg}
+    \caption{assignment-1-d.txt MAC cipher decrypted and decoded jpeg}
+  \end{figure}
 \end{homeworkProblem}
 \end{document}
 
