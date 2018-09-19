@@ -25,7 +25,8 @@ def decrypt_cc_images():
         temp_filename = "img_offset_" + str(guess_offset) + ".png"
 
         print('file %s written to disk'.format(temp_filename))
-        img2disk = open(os.path.join("cc_base64_images", temp_filename), "wb")
+        img2disk = open(os.path.join("cc_base64_images", temp_filename),
+                        "wb")
         img2disk.write(base64.b64decode(base64_string))
         img2disk.close()
 

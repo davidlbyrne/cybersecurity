@@ -5,27 +5,27 @@ Two types of keys: Caesar and Permutation
 Created: June 3, 2017
 Updated: June 6, 2017 (corrections from Nick Stern)
 """
- 
+
 import sys
 import base64
 import binascii
 import numpy as np
- 
+import pdb
+
 base64alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
 'P','Q','R','S','T','U','V','W','X','Y','Z',
 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
 'p','q','r','s','t','u','v','w','x','y','z',
 '0','1','2','3','4','5','6','7','8','9','+','/']
- 
+
 def encode_base64(fileName):
     plaintext_file = open(fileName,'rb')
     plaintext = plaintext_file.read()
     encoded = base64.b64encode(plaintext)
+
     encoded_string = ""
     for character_value in encoded:
-        encoded_string += chr(character_value)
-    #print("Base 64 Encoded String:")
-    #print(encoded_string)
+        encoded_string += chr(ord(character_value))
     return encoded_string
 
 def decode_base64(fileName):
@@ -34,7 +34,7 @@ def decode_base64(fileName):
     decoded = base64.b64decode(plaintext_base64)
     decoded_string = ""
     for character_value in decoded:
-        decoded_string += chr(character_value)
+        decoded_string += chr(ord(character_value))
     return decoded_string
  
 def encrypt_caesar(plaintext_base64,offset):
