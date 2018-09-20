@@ -4,7 +4,7 @@ base64alphabet=[ 'A', 'B', 'C', 'D' , 'E', 'F', 'G' , 'H','I','J', 'K' , 'L', 'M
 '0','1','2','3','4','5','6','7','8','9','+','/']
 #key="2JzvLTdIqRA3nyDg9s0NhxjGf18YQrk/ei6ZM+ObWCKotaclw7FE5BXHV4puUmPS"
 kay="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-key="*2****M*I*F**X***W***V**bUiYZS5*l*/D8Q**6z**P*RO**Axe***********"
+key="*V****M*I****X***W***2**bUiYZS5*lF/D8Q**6z**P*RO**Axe***********"
 #key="*W****M*S*F**X***2***V**ZUbY/Ii*l**D8Q**6z**P*RO**Axe***********"
 # key="*W****M*S*F**X***2*R*V*Z*U*Y/I**l****N*********O****e***********"
 #key="*W****M*S*F**X***2*RV**Z*U*Y/I**l****Q*********O****e***********"
