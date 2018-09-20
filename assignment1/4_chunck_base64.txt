@@ -15,7 +15,7 @@ xyz---->e                       =.02 =  5
   **** **|**  ****| ****  **|** ****
 
 LAST LOCATION OF EACH 4                          
-g      SPACE           = l
+g      SPACE  0.17     = l
 l (el)  e     0.127    = Q
 0 (Zero)t     0.090    = e
 K	a     0.081    = F
@@ -49,9 +49,10 @@ Plaintext                               Plaintext
  | Base64                                | Base64
  |  | Frequency 
      |  | Frequency
- 
-eu  V  0.15460 = 0.12702 + 0.02758  V     HX  h  0.06244 = 0.06094 + 0.0015  s
-_   B  0.13                         2
+
+ _  B  0.17                         V 
+eu  V  0.15460 = 0.12702 + 0.02758  2     HX  h  0.06244 = 0.06094 + 0.0015  s
+                                    
 dt  R  0.13309 = 0.04253 + 0.09056  W     GW  d  0.04375 = 0.02015 + 0.0236  r
    			    W
 cs  N  0.09109 = 0.02782 + 0.06327  X     L  x  0.04025
