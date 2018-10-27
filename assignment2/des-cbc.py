@@ -35,7 +35,7 @@ des_cbc_encrypt(plaintext,key) :
         pte = xor(pte,previous)
         previous = obj.encrypt(pte)
         ciphertext=ciphertext+obj.encrypt(pte)
-
+    return ciphertext
 #Decrypt Function 
 #des first round 
 #remaining rounds 
