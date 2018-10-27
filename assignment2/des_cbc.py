@@ -10,10 +10,10 @@ from Crypto import Random
 #setup and validate input 
 # Set up key , plain text , cipher text , and IV
 key = sys.argv[1]
-file = open(sys.argv[2] , ” r ” )
+file = open(sys.argv[2] , "r")
 plaintext=file.read()
 file.close()
-ciphertext = ””
+ciphertext = ""
 iv = Random.new().read(DES.blocksize)
 
 
@@ -29,6 +29,7 @@ def check_padding(block):
         return block.ljust(8, '0')
 
     return block
+
 
 # xor function
 def xor(lft, rht):
@@ -53,34 +54,25 @@ def xor(lft, rht):
 
     return char_xor
 
-#Encrypt function
-des_cbc_encrypt(plaintext,key) :
-    #des first round 
+
+# Encrypt function
+def des_cbc_encrypt():
+    # des first round
     obj = DES.new(key,DES.MODE_CBC) 
-    pte = checkpad(plaintext[:8])
+    pte = check_padding(plaintext[:8])
     plaintext = plaintext[8:]
     pte = xor(pte,iv)
     previous = obj.encrypt(pte) 
     ciphertext = ciphertext + obj.encrypt(pte)
     # begin remaining rounds
-    for i in range (0,(len(plaintext)/8)) : 
-        pte = checkpad(plaintext[:8])
-        plaintext = plaintext[8:]
-        pte = xor(pte,previous)
+    for i in range (0,(len(plaintext)/8) − ord (chr( not bool(len(plaintext)%8))) + 1) : 
+        pte = check pad (plaintext[ : 8 ] )
+        plaintext = plaintext[ 8 : ]
+        pte = xor (pte,previous)
         previous = obj.encrypt(pte)
-        ciphertext=ciphertext+obj.encrypt(pte)
-    return ciphertext
-#Decrypt Function 
-#des first round 
-#remaining rounds 
-
-
-#print 
-=======
         ciphertext = ciphertext + obj.encrypt(pte) # add on to c i p h e r t e x t
 
 # remaining rounds
->>>>>>> feature/decrypt_dec
 
 #Decrypt Function
 #des first round
