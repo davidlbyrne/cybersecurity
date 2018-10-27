@@ -5,6 +5,28 @@ from Crypto.Cipher import DES
 from Crypto import Random
 
 
+#setup and validate input 
+
+#helper function to transform bas64 key to bin
+#KavahRihanDavid
+
+#xor function	
+
+#Encrypt function 
+#des first round 
+#remaining rounds 
+
+
+#Decrypt Function 
+#des first round 
+#remaining rounds 
+
+
+#print 
+
+
+
+
 
 '''
 $ more test.txt 
