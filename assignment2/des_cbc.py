@@ -10,10 +10,10 @@ from Crypto import Random
 #setup and validate input 
 # Set up key , plain text , cipher text , and IV
 key = sys.argv[1]
-file = open(sys.argv[2] , ” r ” )
+file = open(sys.argv[2] , "r")
 plaintext=file.read()
 file.close()
-ciphertext = ””
+ciphertext = ""
 iv = Random.new().read(DES.blocksize)
 
 
@@ -23,23 +23,43 @@ def check_padding(block):
     # check for block less that 8 characters long
     if len(block) < 8:
         # output characters to pad (8 - x)
-        extras = (8-block)
+        extras = (8-len(block))
         pad_char = 'padding {0} chars with 0'.format(extras)
         print(pad_char)
-        for char in range(8 - len(pad_char)):
-            block = block + chr(0)
+        return block.ljust(8, '0')
 
     return block
 
 
 # xor function
+def xor(lft, rht):
+    # set up 8 char arrays with none elements
+    lft_ba = [None] * 8
+    rht_ba = [None] * 8
+
+    # step through each letter and conv to integer and store
+    for i in range(0, 8):
+        lft_ba[i] = ord(lft[i])
+        rht_ba[i] = ord(rht[i])
+
+    # finally the result of xor
+    xor_res = [None] * 8
+    for i in range(0, 8):
+        xor_res[i] = lft_ba[i] ^ rht_ba[i]
+
+    # convert the bits into char again
+    char_xor = ''
+    for k in xor_res:
+        char_xor.join(chr(k))
+
+    return char_xor
 
 
 # Encrypt function
-def des_cbc_encrypt() :
-# des first round
+def des_cbc_encrypt():
+    # des first round
     obj = DES.new(key,DES.MODE_CBC) 
-    pte = check pad (plaintext[:8])
+    pte = check_padding(plaintext[:8])
     plaintext = plaintext[8:]
     pte = xor(pte,iv)
     previous = obj.encrypt(pte) 
