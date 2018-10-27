@@ -20,22 +20,22 @@ iv = Random.new().read(DES.blocksize)
 #xor function	
 
 #Encrypt function
-des_cbc_encrypt() :  
-#des first round 
+des_cbc_encrypt(plaintext,key) :  
+    #des first round 
     obj = DES.new(key,DES.MODE_CBC) 
-    pte = check pad (plaintext[:8])
+    pte = checkpad(plaintext[:8])
     plaintext = plaintext[8:]
     pte = xor(pte,iv)
     previous = obj.encrypt(pte) 
     ciphertext = ciphertext + obj.encrypt(pte)
     # begin remaining rounds
-    for i in range (0,(len(plaintext)/8) − ord (chr( not bool(len(plaintext)%8))) + 1) : 
-        pte = check pad (plaintext[ : 8 ] )
-        plaintext = plaintext[ 8 : ]
-        pte = xor (pte,previous)
+    for i in range (0,(len(plaintext)/8)) : 
+        pte = checkpad(plaintext[:8])
+        plaintext = plaintext[8:]
+        pte = xor(pte,previous)
         previous = obj.encrypt(pte)
-        ciphertext = ciphertext + obj.encrypt(pte) # add on to c i p h e r t e x t
-
+        ciphertext=ciphertext+obj.encrypt(pte)
+    return ciphertext
 #Decrypt Function 
 #des first round 
 #remaining rounds 
