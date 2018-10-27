@@ -6,6 +6,13 @@ from Crypto import Random
 
 
 #setup and validate input 
+# Set up key , plain text , cipher text , and IV
+key = sys.argv[1]
+file = open(sys.argv[2] , ” r ” )
+plaintext=file.read()
+file.close()
+ciphertext = ””
+iv = Random.new().read(DES.blocksize)
 
 #helper function to transform bas64 key to bin
 #KavahRihanDavid
