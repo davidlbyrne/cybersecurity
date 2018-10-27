@@ -16,6 +16,17 @@ file.close()
 ciphertext = ””
 iv = Random.new().read(DES.blocksize)
 
+def checkpad(plaintext):
+    lenght= len(plaintext)
+    rem = length%8
+    # Pad indicates how many characters we have to add to the end of the file
+    pad = 8 - rem
+    # the first meaningless number in binary is (10000000) which is equal to 128
+    z= 128
+    for i in range (pad):
+        plaintext= plaintext + chr (z + pad)
+    return (plaintext)
+
 
 # helper function to transform bas64 key to bin
 # KavahRihanDavid
