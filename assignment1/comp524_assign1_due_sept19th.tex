@@ -257,6 +257,36 @@ showstringspaces=false            %
 \\
 File - \textcolor{cyan}{\ul{assignment-1-b.txt}}
 \\
+\\
+For this problem, we tried to divide the base 64 encrypted text into 4 character chunks. Because, we know that each 3 character plaintext transfer to 4 letter cipher text. The biggest issue was that because of this transformation the location of each letter in base64 was important. We had to find a frequency function from the base64 to the plaintext. 
+
+\begin{figure}[h!]
+   \includegraphics[width=10cm,height=13cm,keepaspectratio]{locations.png}
+    \caption{base 64 representation of 8 bit character}
+\end{figure}
+
+From our understanding of above figure, we created the below table which has the frequency of letters according to their locations in the ciphertext.
+
+\begin{figure}[h!]
+   \includegraphics[width=10cm,height=13cm,keepaspectratio]{cipher_frequency_analysis.png}
+    \caption{Cipher frequency analysis}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[width=18cm,height=10cm,keepaspectratio]{alpha_m.png}
+    \caption{Frequency measurement value - Diagram 1}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[width=18cm,height=10cm,keepaspectratio]{alpha_m2.png}
+    \caption{Frequency measurement value - Diagram 2}
+\end{figure}
+\begin{figure}[h!]
+   \includegraphics[width=18cm,height=13cm,keepaspectratio]{b1_output.png}
+    \caption{MAC Cipher partially decrypted base64 data}
+\end{figure}
+
+
 \end{homeworkProblem}
 
 \pagebreak
