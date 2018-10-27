@@ -28,18 +28,6 @@ def checkpad(plaintext):
     return (plaintext)
 
 
-# helper function to transform bas64 key to bin
-# KavahRihanDavid
-def check_padding(block):
-    # check for block less that 8 characters long
-    if len(block) < 8:
-        # output characters to pad (8 - x)
-        extras = (8-len(block))
-        pad_char = 'padding {0} chars with 0'.format(extras)
-        print(pad_char)
-        return block.ljust(8, '0')
-
-    return block
 
 # xor function
 def xor(lft, rht):
@@ -68,7 +56,8 @@ def xor(lft, rht):
 des_cbc_encrypt(plaintext,key) :
     #des first round 
     obj = DES.new(key,DES.MODE_CBC) 
-    pte = checkpad(plaintext[:8])
+    plaintext = checkpad(plaintext)
+    pte = plaintext[:8]
     plaintext = plaintext[8:]
     pte = xor(pte,iv)
     previous = obj.encrypt(pte) 
