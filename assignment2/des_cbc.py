@@ -18,11 +18,9 @@ def checkpad(plaintext):
         # Pad indicates how many characters we have to add to the end of the file
         pad = 8 - rem
         # the first meaningless number in binary is (10000000) which is equal to 128
-        z= 128
         for i in range (pad):
-            plaintext= plaintext + chr (z + pad)
+            plaintext= plaintext + chr (0)
     return (plaintext)
-
 
 
 # xor function
@@ -43,14 +41,16 @@ def xor(lft, rht):
         xor_res[i] = lft_ba[i] ^ rht_ba[i]
     # convert the bits into char again
     ret=""
-    for i in xor_res:
-        ret = ret+chr(i)
-    print(ret)
+    print('xor_result:',xor_res)
+    for i in range(len(xor_res)):
+        ret = ret+chr(xor_res[i])
+    print("ret size:",len(ret),ret)
     return ret
 
 #Encrypt function
 def des_cbc_encrypt(plaintext,key,iv) :
-    ciphertext="test"
+    ciphertext=""
+    previous=""
     #des first round 
     obj = DES.new(key,DES.MODE_ECB) 
     plaintext = checkpad(plaintext)
@@ -58,16 +58,26 @@ def des_cbc_encrypt(plaintext,key,iv) :
     plaintext = plaintext[8:]
     print("pte:",pte)
     pte = xor(iv,pte)
-    previous = str(obj.encrypt(pte)) 
-    ciphertext = ciphertext + str(obj.encrypt(pte))
+    print(len(pte))
+    byte_array = [b for b in obj.encrypt(pte)]
+    for i in byte_array :
+        previous=previous+chr(i)
+    print(len(previous), previous)
+    ciphertext = ciphertext + previous
     # begin remaining rounds
     for i in range (0,int((len(plaintext)/8))) : 
         pte = checkpad(plaintext[:8])
         plaintext = plaintext[8:]
-        print("previous ",previous)
+        print("encrypting ",len(pte),"bytes :\'",pte,"\'") 
         pte = xor(previous,pte)
-        previous = obj.encrypt(pte)
-        ciphertext=ciphertext+str(obj.encrypt(pte))
+        print(pte,"END")
+        print(len(pte))
+        byte_array = [b for b in obj.encrypt(pte)]
+        previous=""
+        for i in byte_array :
+            previous=previous+chr(i)
+        print(len(previous), previous)
+        ciphertext = ciphertext + previous        
     return ciphertext
 #Decrypt Function 
 #des first round 
