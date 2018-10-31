@@ -28,11 +28,11 @@ def xor(lft, rht):
     # set up 8 char arrays with none elements
     lft_ba = [None,None,None,None,None,None,None,None]
     rht_ba = [None]*8
-    print(lft_ba)
-    print(lft, rht)
+    # print(lft_ba)
+    # print(lft, rht)
     # step through each letter and conv to integer and store
     for i in range(0,8):
-        print(i)
+        # print(i)
         lft_ba[i] = ord(lft[i])
         rht_ba[i] = ord(rht[i])
     # finally the result of xor
@@ -41,7 +41,7 @@ def xor(lft, rht):
         xor_res[i] = lft_ba[i] ^ rht_ba[i]
     # convert the bits into char again
     ret=""
-    print('xor_result:',xor_res)
+    # print('xor_result:',xor_res)
     return bytes(bytearray(xor_res))
 
 #Encrypt function
@@ -53,24 +53,24 @@ def des_cbc_encrypt(plaintext,key,iv) :
     plaintext = checkpad(plaintext)
     pte = plaintext[:8]
     plaintext = plaintext[8:]
-    print("pte:",pte)
+    # print("pte:",pte)
     pte = xor(iv,pte)
-    print(len(pte))
+    # print(len(pte))
     previous = obj.encrypt(pte)
-    print(len(previous), previous)
+    # print(len(previous), previous)
     ciphertext = ciphertext + previous
     # begin remaining rounds
     for i in range (0,int((len(plaintext)/8))) : 
         pte = checkpad(plaintext[:8])
         plaintext = plaintext[8:]
-        print("encrypting ",len(pte),"bytes :\'",pte,"\'") 
+        # print("encrypting ",len(pte),"bytes :\'",pte,"\'") 
         previous = ''.join([chr(s) for s in bytearray(previous)])
-        print("previous :",previous)
+        # print("previous :",previous)
         pte = xor(previous,pte)
-        print(pte,"END")
-        print(len(pte), "pte",pte)
+        # print(pte,"END")
+        # print(len(pte), "pte",pte)
         previous =  obj.encrypt(pte)
-        print(len(previous), previous)
+        # print(len(previous), previous)
         ciphertext = ciphertext + previous        
     return ciphertext
 #Decrypt Function 
@@ -80,7 +80,7 @@ def des_cbc_encrypt(plaintext,key,iv) :
 
 if __name__ == '__main__':
     key = sys.argv[1]
-    print("Encrypting :",sys.argv[2])
+    # print("Encrypting :",sys.argv[2])
     file = open(sys.argv[2],'r')
     plaintext=file.read()
     file.close()
