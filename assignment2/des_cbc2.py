@@ -4,6 +4,7 @@
 # Python libraries:
 
 import sys
+import os
 import binascii
 from Crypto.Cipher import DES
 from Crypto import Random
@@ -85,7 +86,7 @@ if __name__ == '__main__':
     file.close()
     iv = '00000000'
     ciphertext=des_cbc_encrypt(plaintext,key,iv)
-    print(ciphertext)
+    os.write(1,bytes(ciphertext)) 
 #print 
 
 
