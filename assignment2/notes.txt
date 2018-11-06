@@ -25,10 +25,22 @@ THias tells us how many character we have to cut whne decrypting.
 1000010
 0000010   
 
+def checkpad(plaintext):
+    length= len(plaintext)
+    if ((length % 8) != 0):
+        rem = length%8
+        # Pad indicates how many characters we have to add to the end of the file
+        pad = 8 - rem
+        # the first meaningless number in binary is (10000000) which is equal to 128
+        for i in range (pad):
+            plaintext= plaintext + chr (128 + pad) 
+    return (plaintext)
 
-
-
-
+trim_padding(plaintext)
+    get last char of file 
+    xor latst char with char(128) 
+    if result 1-7 then num ber of pads = result 
+    else no padding  
 
 
 
