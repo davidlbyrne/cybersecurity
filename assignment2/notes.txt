@@ -1,0 +1,34 @@
+[Hello t] [his is t] [he 5th o] [f novemb] [er 201]
+
+1. Padding zeros is bad because there no way to disguish the padding form the message. 
+
+2. We have the same problem if we pad with any other readable character. 
+
+3. We sugest a shcema where we pad with non-readable ascii character. 
+
+4. Example: 10000000 
+
+5. We extend this schem further to encode the number of paddings characters by incrementing the non-readable character by 1 for each additional padding. 
+
+6. For a file that would requier 3 padded characters would have 10000011 10000011 10000011
+
+7. Would would the padding be 4 pads? 10000100 10000100 10000100 10000100 and so on. 
+
+8. THis would be advantages because you could determin how many characters are padding strictly by analysing the last character of the file. 
+
+take the last caracter xor with  bin(128)  = how many paddings
+
+THias tells us how many character we have to cut whne decrypting. 
+
+
+1000000
+1000010
+0000010   
+
+
+
+
+
+
+
+
